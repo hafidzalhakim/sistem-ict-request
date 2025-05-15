@@ -10,7 +10,7 @@ class LoginController extends BaseController
     public function __construct()
     {
         $this->login =new LoginModel();
-    }
+    }       
 
     public function login()
     {
@@ -43,7 +43,7 @@ class LoginController extends BaseController
         //Query pengguna berdasarkan masukan form
         $data = $this->login->validateUser($username, $password);
 
-        if(empty($data)){
+        if(!empty($data)){
             // set cookie
             $session->set( [
                 "id" => $data->id_pengguna,
