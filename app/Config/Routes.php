@@ -12,3 +12,5 @@ $routes->get('login', 'LoginController::login');
 $routes->get('logout', 'LoginController::logout');
 // validasi masuk
 $routes->post('auth', 'LoginController::validasimasuk');
+
+$routes->get('manager', 'Manager1::tampildata');

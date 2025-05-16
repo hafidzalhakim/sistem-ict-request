@@ -13,11 +13,14 @@ class LoginModel extends Model
       //cek users password
       public function validateUser($username, $password)
       {
+        
+
           $builder = $this->db->table('pengguna');
           $builder ->join('divisi', 'divisi.id_divisi = pengguna.id_divisi');
           $builder ->where('username', $username);
           $builder ->where('password', $password);
           $query = $builder->get()->getRow();
+
           return $query;
       }
 

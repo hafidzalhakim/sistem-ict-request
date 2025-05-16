@@ -9,15 +9,15 @@ class LoginController extends BaseController
 
     public function __construct()
     {
-        $this->login =new LoginModel();
-    }       
+        $this->login = new LoginModel();
+    }
 
     public function login()
     {
-        return view('admin/login');
+        return view('manager/login');
     }
 
-    public function validasimasuk() 
+    public function validasimasuk()
     {
         $session = session();
         // menggunakan library validation
@@ -29,49 +29,49 @@ class LoginController extends BaseController
         ]);
 
         //Menjalankan rule
-        if(!$validate->withRequest($this->request)->run()){
+        if (!$validate->withRequest($this->request)->run()) {
             //Jika validasi gagal
-            $session->setFlashdata('error',  'failed');
+            $session->setFlashdata('error', 'failed');
             return redirect()->to('/login');
         }
 
         //Mendapatkan data
-        $username = esc( $this->request->getPost('username'));
-        $password = esc( $this->request->getPost('password'));
+        $username = esc($this->request->getPost('username'));
+        $password = esc($this->request->getPost('password'));
 
         //Validasi form input
         //Query pengguna berdasarkan masukan form
         $data = $this->login->validateUser($username, $password);
 
-        if(!empty($data)){
+        if (!empty($data)) {
             // set cookie
-            $session->set( [
+            $session->set([
                 "id" => $data->id_pengguna,
                 "username" => $data->username,
                 "password" => $data->password,
                 "nama_pengguna" => $data->nama_pengguna,
                 "divisi" => $data->divisi,
-                "isLogin" => true  
+                "isLogin" => true
             ]);
 
             //cek role pengguna
-            switch ($data->role){
-                case 'manager' :
-                    $session->set( 'role', 'manager');
-                    return redirect()->to( '/manager');
+            switch ($data->role) {
+                case 'manager':
+                    $session->set('role', 'manager');
+                    return redirect()->to('/manager');
                     break;
-                case 'divisiict' :
-                    $session->set('role',  'divisiict');
-                    return redirect()->to( '/divisiict');
+                case 'divisiict':
+                    $session->set('role', 'divisiict');
+                    return redirect()->to('/divisiict');
                     break;
                 default:
-                    $session->set( 'role',  'karyawan');
-                    return redirect()->to( '/karyawan');
+                    $session->set('role', 'karyawan');
+                    return redirect()->to('/karyawan');
                     break;
             }
         } else {
-            $session->setFlashdata( 'error', 'invalid');
-            return redirect()->to( '/login');
+            $session->setFlashdata('error', 'invalid');
+            return redirect()->to('/login');
         }
     }
 
