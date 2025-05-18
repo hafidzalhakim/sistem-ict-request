@@ -4,13 +4,13 @@ namespace App\Controllers;
 
 use App\Models\ManagerModel;
 
-class Manager1 extends BaseController
+class Manager extends BaseController
 {
     protected $requ; // Variabel untuk menyimpan objek model
 
     public function __construct()
     {
-        // Inisialisasi objek model AdminModel di dalam konstruktor
+        // Inisialisasi objek model ManagerModel di dalam konstruktor
         $this->requ = new ManagerModel();
     }
 
@@ -20,11 +20,11 @@ class Manager1 extends BaseController
         $session = session();        
         
         if (!$session->get('isLogin') || $session->get('role') !== 'manager') {
-            // Jika pengguna tidak login atau bukan admin, redirect ke halaman login
+            // Jika pengguna tidak login atau bukan Manager, redirect ke halaman login
             return redirect()->to('login');
         }
 
-        // Panggil metode getAllDataTable dari objek model AdminModel
+        // Panggil metode getAllDataTable dari objek model ManagerModel
         $datar['rdata'] = $this->requ->tampilDataTabel();
 
         // Kirim data ke view
