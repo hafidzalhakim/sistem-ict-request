@@ -18,6 +18,8 @@ class karyawan extends BaseController {
     }
 
     public function reques() {
+        
+        
         // Periksa status login dan role pengguna
         $session = session();
         if (!$session->get('isLogin') || $session->get('role') !== 'karyawan') {
