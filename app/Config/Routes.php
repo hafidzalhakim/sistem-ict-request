@@ -17,3 +17,5 @@ $routes->get('karyawan', 'Karyawan::reques');
 
 $routes->get('manager', 'Manager::tampildata');
 $routes->get('divisiict', 'DivisiIct::tampildata2');
+
+

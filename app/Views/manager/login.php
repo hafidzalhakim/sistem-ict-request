@@ -1,107 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ICT Request - Login</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | ICT Request</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-    <!-- Fonts & Styles -->
-    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <style>
-      body {
-        background-color: #f8f9fc;
-        font-family: 'Poppins', sans-serif;
-      }
-      .login-card {
-        max-width: 400px;
-        margin: 80px auto;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        background: #ffffff;
-      }
-      .login-card h1 {
-        font-size: 26px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        text-align: center;
-        color: #000000; /* Hitam */
-      }
-      .form-control-user {
-        border-radius: 8px;
-        font-size: 14px;
-      }
-      .btn-green {
-        background-color: #28a745;
-        border-color: #28a745;
-        color: #fff;
-        border-radius: 8px;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
-      }
-      .btn-green:hover {
-        background-color: #218838;
-        border-color: #1e7e34;
-      }
-      .alert {
-        font-size: 14px;
-        padding: 10px;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      .logo {
-        display: block;
-        margin: 0 auto 20px;
-        max-width: 100px;
-      }
-    </style>
-  </head>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-  <body>
-    <div class="login-card">
-      <img src="<?= base_url('assets/image/emp.png') ?>" alt="EMP Logo" class="logo" />
-      <h1>Login</h1>
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                  0 10px 10px rgba(0,0,0,0.22);
+      width: 800px;
+      max-width: 100%;
+      display: flex;
+      overflow: hidden;
+    }
 
-      <?php
-        $session = session();
-        if ($session->getFlashdata('error') == 'failed') {
-          echo "<div class='alert alert-danger'>Tolong isi form dengan benar.</div>";
-        } else if ($session->getFlashdata('error') == 'invalid') {
-          echo "<div class='alert alert-danger'>Username atau password salah.</div>";
-        }
-      ?>
+    .login-form, .welcome {
+      padding: 40px;
+      width: 50%;
+      position: relative;
+    }
 
-      <form class="user" action="<?= site_url('/auth') ?>" method="post">
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control form-control-user"
-            name="username"
-            placeholder="Username"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="password"
-            class="form-control form-control-user"
-            name="password"
-            placeholder="Password"
-          />
-        </div>
-        <button type="submit" class="btn btn-green btn-block">
-          Masuk
-        </button>
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-title {
+      font-weight: 600;
+      font-size: 26px;
+      margin: 0;
+      margin-bottom: 60px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .input {
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .btn {
+      border-radius: 20px;
+      border: none;
+      padding: 12px 45px;
+      background-color: #28a745;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    .welcome {
+      background: linear-gradient(to right, #28a745, #218838);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .welcome img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 10px; /* Sesuaikan ini untuk sejajarkan dengan "Login" */
+      margin-bottom: 10px;
+    }
+
+    .welcome p {
+      font-size: 14px;
+      margin: 0;
+      max-width: 250px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-form">
+      <h2 class="login-title">Login</h2>
+      <form action="<?= site_url('/auth') ?>" method="post">
+        <input class="input" type="text" name="username" placeholder="Email" required />
+        <input class="input" type="password" name="password" placeholder="Password" required />
+        <button class="btn" type="submit">Masuk</button>
       </form>
     </div>
 
-    <!-- Scripts -->
-    <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
-  </body>
-</html>
+<div class="welcome">
+  <img src="<?= base_url('assets/image/emp.png') ?>" alt="EMP Logo" />
+  
+  <!-- Spacer antar logo dan teks -->
+  <div style="height: 20px;"></div>
+
+  <h2>Selamat Datang di Sistem ICT Request</h2>
+  <p>Silakan login untuk mengakses layanan internal perusahaan.</p>
+</div>
+
