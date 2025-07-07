@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 
 // $routes->get('/', 'Home::index');
 // halaman login
-$routes->get('/', 'LoginController::login');
+$routes->get('/login', 'LoginController::login');
 // log out
 $routes->get('logout', 'LoginController::logout');
 // validasi masuk
