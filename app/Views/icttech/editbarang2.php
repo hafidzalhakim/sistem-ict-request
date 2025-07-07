@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rincian Request-Area Manager</title>
+    <title>Edit Barang</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -23,6 +23,9 @@
 
     <!-- Custom styles for this template-->
     <link href=<?=base_url('assets/css/sb-admin-2.min.css')?> rel="stylesheet" />
+    <!-- Custom Warna Table -->
+    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
+
 
 </head>
 
@@ -39,18 +42,45 @@
                 <div class="sidebar-brand-icon">
                 <i class="fas fa-list-ul"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ICT Request Manager</div>
+                <div class="sidebar-brand-text mx-3">ICT Request Admin</sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('manager')?>">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Inbox Of Request</span></a>
-            </li>
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Inbox Of Request</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
+                <i class="fas fa-fw fa-user-alt"></i>
+                <span>Pengelola User</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
+            <i class="fas fa-history"></i>
+                <span>Request</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Barang</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Transaksi Barang</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Kondisi Barang</span></a>
+        </li>
 
 
             <!-- Divider -->
@@ -133,101 +163,69 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Rincian Request</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Edit Barang</h1>
                     <div class="card shadow mb-4">
+                        
                         <div class="card-body">
-                                <div class="form-group" >
-                                    <label for="nama_pengguna">Name</label>
-                                    <span style="margin-left: 15%;" >: <?php echo $rrincir->nama_pengguna ?></span>
+                            <form action="<?php echo site_url('proseseditbarangict/'.$datubad['id_barang']) ?>" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                    <input type="hidden" name="id_transaksi" id="id_transaksi" class="form-control" value="<?=$datubad['id_transaksi']?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="divisi">Division</label>
-                                    <span style="margin-left: 14%;" >: <?php echo $rrincir->divisi ?></span>
+                                    <label for="id_pengguna" style="border-bottom: 3px solid #000;">Nama Pemakai</label><br>
+                                    <select name="id_pengguna" id="id_pengguna" class="form-control">
+                                        <option value="" selected disabled>--Option--</option>
+                                        <?php foreach ($dataus as $key => $value) { ?>
+                                          <option value="<?= $value['id_pengguna']?>" <?= ($value['id_pengguna'] == $datubad['id_pengguna']) ? 'selected' : '' ?>><?=$value['nama_pengguna']?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="date_request">Date Of Request</label>
-                                    <span style="margin-left: 9%;" >: <?php echo $rrincir->date_request ?></span>
+                                    <label for="email" style="border-bottom: 3px solid #000;">Kondisi Barang</label><br>
+                                    <select name="id_kondisi" id="id_kondisi" class="form-control">
+                                      <option value="" selected disabled>--Option--</option>
+                                      <?php foreach ($datuk as $key => $value) { ?>
+                                          <option value="<?= $value['id_kondisi']?>" <?= ($value['id_kondisi'] == $datubad['id_kondisi']) ? 'selected' : '' ?>><?=$value['kondisi']?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <span style="margin-left: 16%;" >: <?php echo $rrincir->time ?></span>
+                                    <label for="lokasi" style="border-bottom: 3px solid #000;">Lokasi</label><br>
+                                    <select name="lokasi" id="lokasi" class="form-control">
+                                        <option value="" selected disabled>--Option--</option>
+                                        <?php foreach ($datulok as $key => $value) { ?>
+                                          <option value="<?= $value['nama_lokasi']?>" <?= ($datubad['lokasi'] == $value['nama_lokasi']) ? 'selected' : '' ?>><?=$value['nama_lokasi']?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_permintaan">Jenis Permintaan</label>
-                                    <span style="margin-left: 9%;" >: <?php echo $rrincir->jpermintaan ?></span>
+                                    <label for="kode_barang" style="border-bottom: 3px solid #000;">Kode Barang</label><br>
+                                    <input type="text" name="kode_barang" id="kode_barang" class="form-control" value="<?=$datubad['kode_barang']?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="barang">Barang</label>
-                                    <span style="margin-left: 14.5%;" >: <?php echo $rrincir->kode_barang ?></span>
+                                    <label for="email" style="border-bottom: 3px solid #000;">Serial Number Barang</label><br>
+                                    <input type="text" name="serial_number" id="serial_number" class="form-control" value="<?=$datubad['serial_number']?>">
                                 </div>
                                 <div class="form-group">
-                                  <label for="description">Description</label>
-                                  <span style="margin-left: 12%;" >: <?php echo $rrincir->description ?></span>
-                              </div>
-                              
-                            
-                    </div>
-                    
-                    </div>
-                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#approveModal"><i class="fas fa-plus"></i>Add Approval</button>
-                    <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="assigntModalLabel">Request Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                               </button>
-                              </div>
-                              <form action="<?php echo site_url('proseseditrincian') ?>" method="post" enctype="multipart/form-data" >
-                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrincir->id_request?>">
-                            <div class="modal-body">
-                              <div class="form-group">
-                                    <label for="date_approve">Date Of Approval</label>
-                                    <input type="date" name="date_approve" id="date_approve" class="form-control" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d')?>">
-                                </div>
-                            </div>
-                          <div class="modal-footer">
-                                <div class="form-group">
-                                <button class="btn btn-success" name="status" value="approved" style="float: right;">Approve</button>
+                                    <label for="email" style="border-bottom: 3px solid #000;">Note</label><br>
+                                    <textarea name="note" id="note" rows="5" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
-                                <button class="btn btn-success" name="status" value="not approved" style="float: right; margin-right:10px">Not Approve</button>
+                                    <label for="email" style="border-bottom: 3px solid #000;">Gambar Barang</label><br>
+                                    <input type="hidden" name="existing_image" value="<?=$datubad['gambar']?>">
+                                    <input type="file" name="gambar" id="gambar" class="form-control" >
+                                    <?php if(isset($datubad['gambar']) && !empty($datubad['gambar'])): ?>
+                                      <p>File saat ini: <?= $datubad['gambar'] ?></p>
+                                      <img src="<?= base_url('assets/image/'.$datubad['gambar'])  ?>" alt="Gambar Barang" style="max-width: 200px;">
+                                    <?php endif?>
                                 </div>
                                 <div class="form-group">
-                                <button type="button" class="btn btn-danger" style="float: right; margin-right:10px" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-success" type="submit" style="float: right;">Simpan</button>
                                 </div>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                      </div>
-
-                      <h1 class="h3 mb-4 text-gray-800">Approval</h1>
-                    <div class="card shadow mb-4">
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Status Of Approval</th>
-                                <th>Date Of Approval</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            <?php if($rrinciir):?>
-                              <tr>
-                                <td><?php echo $rrinciir->status ?></td>
-                                <td><?php echo $rrinciir->date_approve ?></td>
-                              </tr>
-                            <?php endif?>
-                            </tbody>
-                          </table>
-                          
-                        </div>
-                        <div class="form-group">
-                                <a href="<?=base_url('admin')?>" class="btn btn-danger" style="float: right; margin-right:10px">Cancel</a>
-                        </div>  
+                                <div class="form-group">
+                                <a href="<?=base_url('pengelola-barang')?>" class="btn btn-danger" style="float: right; margin-right:10px">Cancel</a>
+                                </div>
+                            </form>
                     </div>
                     </div>
                 </div>
@@ -286,6 +284,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src=<?=base_url('assets/js/sb-admin-2.min.js')?>></script>
+
+    <!-- script warna table -->
+    <script src=<?=base_url('assets/js/table.js')?>></script>
 
 </body>
 

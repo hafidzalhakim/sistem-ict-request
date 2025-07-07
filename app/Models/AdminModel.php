@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ManagerModel extends Model
+class AdminModel extends Model
 {
     protected $table = 'request';
     protected $primaryKey = 'id_request'; // Perbaikan: Mengubah 'primarykey' menjadi 'primaryKey'

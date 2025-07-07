@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request-DivisiICT</title>
+    <title>Pengelola Kondisi Barang-ICT Tech</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -31,8 +31,6 @@
       href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
       rel="stylesheet"
     />
-    <!-- Custom Warna Table -->
-    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
   </head>
 
   <body id="page-top">
@@ -43,10 +41,10 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon">
+            <div class="sidebar-brand-icon ">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Divisi ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">Pengelola Kondisi Barang-ICT Tech</sup></div>
         </a>
 
         <!-- Divider -->
@@ -54,36 +52,39 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Pengelola User</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
             <i class="fas fa-history"></i>
                 <span>Request</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Transaksi Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -161,45 +162,39 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Inbox Request</h1>
+            <a href="<?php echo site_url('tambahkondisiict') ?>">
+                    <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black">
+                        <i class="fas fa-plus"></i> Tambah Kondisi
+                    </button>
 
+                    </a>
+            <h1 class="h3 mb-2 text-gray-800">Pengelola Kondisi Barang</h1>
+           
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Division</th>
-                        <th>Demand Type</th>
-                        <th>Date Of Request</th>
-                        <th>Assignment</th>
-                        <th>Data Print</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($rdataa as $reques): ?>
-                      <tr class="request">
-                        <td><?= $reques->nama_pengguna?></td>
-                        <td><?= $reques->divisi?></td>
-                        <td><?= $reques->jpermintaan?></td>
-                        <td><?= $reques->date_request?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
-                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
-                      </tr>
-                      <?php endforeach?>
-                      
-                    </tbody>
-                  </table>
-                </div>
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Kondisi</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach($datuk as $duse): ?>
+                              <tr>
+                                  <td><?= $duse['kondisi']?></td>
+                                  <td class="d-flex align-items-center justify-content-center">
+                                    <a href="<?php echo site_url('hapuskbtech').'/'.$duse['id_kondisi']?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+                                  </td>
+                              </tr>
+                              <?php endforeach?>
+                          </tbody>
+                      </table>
+                  </div>
               </div>
-            </div>
+          </div>
           </div>
           <!-- /.container-fluid -->
         </div>
@@ -279,8 +274,5 @@
 
     <!-- Page level custom scripts -->
     <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
-
-    <!-- script warna table -->
-    <script src=<?=base_url('assets/js/table.js')?>></script>
   </body>
 </html>

@@ -42,7 +42,7 @@
                 <div class="sidebar-brand-icon">
                 <i class="fas fa-list-ul"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ICT Request Admin</sup></div>
+                <div class="sidebar-brand-text mx-3">ICT Request Divisi ICT</sup></div>
             </a>
 
             <!-- Divider -->
@@ -50,7 +50,7 @@
 
              <!-- Nav Item - Dashboard -->
              <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('admin-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>

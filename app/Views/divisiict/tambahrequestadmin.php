@@ -51,7 +51,7 @@
              <!-- Nav Item - Dashboard -->
 
              <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('admin-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>

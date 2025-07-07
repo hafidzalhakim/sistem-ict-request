@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Assignment-Divisi ICT</title>
+    <title>Rincian Request-ICT Tech</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -23,10 +23,6 @@
 
     <!-- Custom styles for this template-->
     <link href=<?=base_url('assets/css/sb-admin-2.min.css')?> rel="stylesheet" />
-    <link
-      href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
-      rel="stylesheet"
-    />
     <!-- Custom Warna Table -->
     <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
 
@@ -46,7 +42,7 @@
                 <div class="sidebar-brand-icon">
                 <i class="fas fa-list-ul"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ICT Request Divisi ICT</sup></div>
+                <div class="sidebar-brand-text mx-3">ICT Request-ICT Tech</sup></div>
             </a>
 
             <!-- Divider -->
@@ -54,33 +50,34 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Pengelola User</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
             <i class="fas fa-history"></i>
                 <span>Request</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Transaksi Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
@@ -182,45 +179,45 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php if($rrinci):?>
+                      <?php if($rrinc):?>
                       <tr>
-                        <td><?php echo $rrinci->date_request?></td>
-                        <td><?php echo $rrinci->time?></td>
-                        <td><?php echo $rrinci->nama_pengguna?></td>
-                        <td><?php echo $rrinci->divisi?></td>
-                        <td><?php echo $rrinci->jpermintaan?></td>
+                        <td><?php echo $rrinc->date_request?></td>
+                        <td><?php echo $rrinc->time?></td>
+                        <td><?php echo $rrinc->nama_pengguna?></td>
+                        <td><?php echo $rrinc->divisi?></td>
+                        <td><?php echo $rrinc->jpermintaan?></td>
                       </tr>
                       <?php endif?>
-                         </tbody>
-                        </table>
-                      </div>
-                <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                          <th>Kode Barang</th>
-                          <th>Status Of Approval</th>
-                          <th>Date Of Approve</th>
-                          <th>Description</th>
-                          <th>Need Approval</th>
-                          <th>Status Of Request</th>
-                          <th>Solutions</th>
-                          <th>Action</th>
+                    </tbody>
+                            </table>
+                          </div>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Kode Barang</th>
+                              <th>Status Of Approval</th>
+                              <th>Date Of Approval</th>
+                              <th>Description</th>
+                              <th>Need Approval</th>
+                              <th>Status Of Request</th>
+                              <th>Solutions</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <?php if($rrinc):?>
+                            <tr>
+                        <td><?php echo $rrinc->kode_barang?></td>
+                        <td><?php echo $rrinc->status_approve?></td>
+                        <td><?php echo $rrinc->date_approved?></td>
+                        <td><?php echo $rrinc->description?></td>
+                        <td><?php echo $rrinc->akses?></td>
+                        <td><?php echo $rrinc->status_reques?></td>
+                        <td><?php echo $rrinc->solution?></td>
+                        <td><button type="button" class="btn btn-link " style="background-color: #00FF00;color:black" data-toggle="modal" data-target="#requestModalEdit<?= $rrinc->id_request?>">Edit Request</button></td>
                       </tr>
-                    </thead>
-                    <tbody>
-                    <?php if($rrinci):?>
-                      <tr>
-                        <td><?php echo $rrinci->kode_barang?></td>
-                        <td><?php echo $rrinci->status_approve?></td>
-                        <td><?php echo $rrinci->date_approved?></td>
-                        <td><?php echo $rrinci->description?></td>
-                        <td><?php echo $rrinci->akses?></td>
-                        <td><?php echo $rrinci->status_reques?></td>
-                        <td><?php echo $rrinci->solution?></td>
-                        <td><button type="button" class="btn btn-link " style="background-color: #00FF00;color:black" data-toggle="modal" data-target="#requestModalEdit<?= $rrinci->id_request?>">Edit Request</button></td>
-                      </tr>
-                      <div class="modal fade" id="requestModalEdit<?= $rrinci->id_request?>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="requestModalEdit<?= $rrinc->id_request?>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -230,8 +227,8 @@
                                </button>
                               </div>
                             <div class="modal-body">
-                            <form action="<?php echo site_url('prosesubahreq/' . $rrinci->id_request) ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinci->id_request?>">
+                            <form action="<?php echo site_url('prosesubahrequ/' . $rrinc->id_request) ?>" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinc->id_request?>">
                                 
                             <div class="form-group">
                                     <label for="akses">Need Approval</label> <br>
@@ -242,7 +239,7 @@
                                         foreach ($jenispermintaan as $key => $value) {
                                             if ($counter < 2) { // Hanya menampilkan dua pilihan pertama
                                         ?>
-                                            <option value="<?= $value['akses_approval'] == 1 ? 'Perlu Approval' : 'Tidak Perlu' ?>"  <?= ($rrinci->akses == ($value['akses_approval'] == 1 ? 'Perlu Approval' : 'Tidak Perlu')) ? 'selected' : '' ?>>
+                                            <option value="<?= $value['akses_approval'] == 1 ? 'Perlu Approval' : 'Tidak Perlu' ?>">
                                                 <?= $value['akses_approval'] == 1 ? 'Perlu Approval' : 'Tidak Perlu' ?>
                                             </option>
                                         <?php 
@@ -254,30 +251,31 @@
                                         ?>
                                     </select>
 
-                                </div>
+                                </div>    
+
                                 <div class="form-group">
                                     <label for="status_reques">Status Of Request</label><br>
                                     <select name="status_reques" id="status_reques" class="form-control">
                                       <option value="" selected disabled >---Option---</option>
-                                      <option value="done" <?php if ($rrinci->status_reques === 'done') echo 'selected'; ?>>Done</option>
-                                      <option value="on progress" <?php if ($rrinci->status_reques === 'on progress') echo 'selected'; ?> >On Progress</option>
+                                      <option value="done" <?php if ($rrinc->status_reques === 'done') echo 'selected'; ?>>Done</option>
+                                      <option value="on progress" <?php if ($rrinc->status_reques === 'on progress') echo 'selected'; ?> >On Progress</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                   <label for="date_approved">Date Of Approval</label>
-                                  <input type="date" name="date_approved" id="date_approved" class="form-control" value="<?= $rrinci->date_approved?>">
+                                  <input type="date" name="date_approved" id="date_approve" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="status_approve">Status Of Approval</label><br>
                                     <select name="status_approve" id="status_approve" class="form-control">
                                       <option value="" selected disabled >---Option---</option>
-                                      <option value="approved" <?php if ($rrinci->status_approve === 'approved') echo 'selected'; ?>>Approved</option>
-                                      <option value="not approved" <?php if ($rrinci->status_approve === 'not approved') echo 'selected'; ?> >Not Approved</option>
+                                      <option value="approved" <?php if ($rrinc->status_approve === 'approved') echo 'selected'; ?>>Approved</option>
+                                      <option value="not approved" <?php if ($rrinc->status_approve === 'not approved') echo 'selected'; ?> >Not Approved</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="Solution">Solutions</label><br>
-                                    <textarea name="solution" id="solution" rows="10" class="form-control w-100"><?php echo $rrinci->solution?></textarea>
+                                    <textarea name="solution" id="solution" rows="10" class="form-control w-100"><?php echo $rrinc->solution?></textarea>
                                 </div>
                             </div>
                             
@@ -299,6 +297,7 @@
                           </div>
                         </div>
                     </div>
+
                     <h1 class="h3 mb-4 text-gray-800">Approval</h1>
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -308,17 +307,15 @@
                                 <tr>
                                   <th>Approver</th>
                                   <th>Status Of Approval</th>
-                                  <th>Position</th>
                                   <th>Date Of Approval</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
-                                  <?php if($rriincii):?>
-                                    <td><?php echo $rriincii->nama_pengguna?></td>
-                                    <td><?php echo $rriincii->status?></td>
-                                    <td><?php echo $rriincii->divisi?></td>
-                                    <td><?php echo $rriincii->date_approve?></td>
+                                  <?php if($rriinc):?>
+                                    <td><?php echo $rriinc->nama_pengguna?></td>
+                                    <td><?php echo $rriinc->status?></td>
+                                    <td><?php echo $rriinc->date_approve?></td>
                                   <?php endif?>
                                 </tr>
                               </tbody>
@@ -326,8 +323,9 @@
                           </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#assignModal"><i class="fas fa-plus"></i>Add Asign</button>
-                    <div class="modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+
+                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#assignModal2"><i class="fas fa-plus"></i>Add Asign</button>
+                    <div class="modal fade" id="assignModal2" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -336,12 +334,12 @@
                                   <span aria-hidden="true">&times;</span>
                                </button>
                               </div>
-                              <form action="<?php echo site_url('prosesassign') ?>" method="post" enctype="multipart/form-data">
-                              <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinci->id_request?>">
+                              <form action="<?php echo site_url('proseswork') ?>" method="post" enctype="multipart/form-data">
+                              <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinc->id_request?>">
                             <div class="modal-body">
-                              <div class="form-group">
+                                <div class="form-group">
                                     <label for="assigned">Assign To</label><br>
-                                    <select name="assigned" id="assigned" class="form-control">
+                                    <select name="assignedtech" id="assigned" class="form-control">
                                       <option value="" selected disabled>---Option---</option>
                                       <?php foreach ($userict as $key => $value) { ?>
                                           <option value="<?= $value['id_pengguna']?>"><?=$value['nama_pengguna']?></option>
@@ -349,13 +347,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="date_assign">Date Of Assignment</label><br>
-                                    <input type="date" name="date_assign" id="date_assign" class="form-control" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d')?>">
+                                    <label for="date_assigntech">Date Of Assignment</label><br>
+                                    <input type="date" name="date_assigntech" id="date_assign" class="form-control" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d')?>">
                                 </div>
                                 
                             </div>
                         <div class="modal-footer">
-                          <div class="form-group">
+                        <div class="form-group">
                                 <button class="btn btn-success" type="submit" style="float: right;" name="tambah">Simpan</button>
                                 </div>
                                 <div class="form-group">
@@ -366,10 +364,11 @@
                         </div>
                       </div>
                     </div>
+
                     
                     <h1 class="h3 mb-4 text-gray-800">Assignment</h1>
                     
-                   <div class="card shadow mb-4">
+                        <div class="card shadow mb-4">
                         <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -383,9 +382,9 @@
                         <th>Solution</th>
                         <th>Action</th>
                       </tr>
-                      </thead>
-                       <tbody>
-                      <?php foreach($rrincii as $rrin):?>
+                    </thead>
+                    <tbody>
+                      <?php foreach($rrinci as $rrin):?>
                       <tr>
                         <td><?= $rrin->assigned?></td>
                         <td><?= $rrin->date_assign?></td>
@@ -395,10 +394,10 @@
                         <td><?= $rrin->solusi?></td>
                         <td>
                           <button type="button" class="btn btn-link " style="background-color: #00FF00;color:black" data-toggle="modal" data-target="#assignModalEdit<?= $rrin->id_assign?>">Edit Asign</button>
-                          <a href="<?php echo site_url('hapusassign').'/'.$rrin->id_assign.'/'.$rrinci->id_request?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')">
+                          <a href="<?php echo site_url('hapusassigned').'/'.$rrin->id_assign.'/'.$rrinc->id_request?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')">
                               <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                           </a>
-                          </td>
+                        </td>
                       </tr>
                       <div class="modal fade" id="assignModalEdit<?= $rrin->id_assign?>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -410,21 +409,20 @@
                                </button>
                               </div>
                             <div class="modal-body">
-                            <form action="<?php echo site_url('prosesubahassign/' . $rrin->id_assign) ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinci->id_request?>">
+                            <form action="<?php echo site_url('prosesubahassigned/' . $rrin->id_assign) ?>" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrinc->id_request?>">
                                 <div class="form-group">
                                     <label for="date_assign">Date Of Assignment</label><br>
                                     <input type="date" name="date_assignedit" id="date_assignedit" class="form-control" value="<?php echo $rrin->date_assign?>">
                                 </div>
                                 <div class="form-group">
-                                  <label for="assigned">Assign To</label><br>
-                                  <select name="assignededit" id="assignededit" class="form-control">
+                                    <label for="assigned">Assign To</label><br>
+                                    <select name="assignededit" id="assignededit" class="form-control">
                                       <option value="" selected disabled>---Option---</option>
-                                      <?php foreach ($userict as $key => $value) { ?>
-                                          <option value="<?= $value['id_pengguna']?>" <?= ($value['nama_pengguna'] == $rrin->assigned) ? 'selected' : '' ?>><?= $value['nama_pengguna'] ?></option>
-                                      <?php } ?>
-                                  </select>
-                              </div>
+                                      <option value="Fadel"<?php if ($rrin->assigned === 'Fadel') echo 'selected'; ?>>Fadel</option>
+                                      <option value="Wanda"<?php if ($rrin->assigned === 'Wanda') echo 'selected'; ?>>Wanda</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="status_request">Status Of Request</label><br>
                                     <select name="status_requestedit" id="status_requestedit" class="form-control">
@@ -468,8 +466,11 @@
                             </table>
                             
                           </div>
+                        
+
+                    
                     </div>
-                  </div>
+                        </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -496,7 +497,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-                    
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -526,13 +527,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src=<?=base_url('assets/js/sb-admin-2.min.js')?>></script>
-
-    <!-- Page level plugins -->
-    <script src=<?=base_url('assets/vendor/datatables/jquery.dataTables.min.js')?>></script>
-    <script src=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js')?>></script>
-
-    <!-- Page level custom scripts -->
-    <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
 
     <!-- script warna table -->
     <script src=<?=base_url('assets/js/table.js')?>></script>

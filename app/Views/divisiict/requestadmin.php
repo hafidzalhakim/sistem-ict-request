@@ -52,7 +52,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('admin-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
@@ -161,7 +161,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h3 class="h3 text-gray-800">ICT Request Admin</h3>
+            <h3 class="h3 text-gray-800">ICT Request Divisi ICT</h3>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
