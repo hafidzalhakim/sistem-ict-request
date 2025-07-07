@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request</title>
+    <title>Pengelola User-Divisi ICT</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -40,11 +40,11 @@
        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a href=<?=base_url('/admin')?> class="sidebar-brand d-flex align-items-center justify-content-center" >
-            <div class="sidebar-brand-icon">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon ">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">Pengelola User-Divisi ICT</sup></div>
         </a>
 
         <!-- Divider -->
@@ -52,7 +52,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('admin-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
@@ -82,7 +82,6 @@
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
-
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -116,7 +115,7 @@
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <div class="topbar-divider d-none d-sm-block"></div>
-              
+
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a
@@ -161,22 +160,16 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h3 class="h3 text-gray-800">ICT Request Admin</h3>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-              <?php if(session()->getFlashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success'); ?>
-                </div>
-              <?php endif; ?>
-
-              <a href="<?php echo site_url('tambahrequest-admin') ?>">
-                    <button class="btn btn-link float-right w-100" style="background-color: #66CDAA;color:black">
-                        <i class="fas fa-plus"></i> Tambah Request
+            <a href="<?php echo site_url('tambahpengguna') ?>">
+                    <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black">
+                        <i class="fas fa-plus"></i> Tambah Pengguna
                     </button>
 
                     </a>
+            <h1 class="h3 mb-2 text-gray-800">Pengelola Users</h1>
+           
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="table-responsive">
                   <table
@@ -187,100 +180,35 @@
                   >
                     <thead>
                       <tr>
-                        <th>Tanggal Request</th>
-                        <th>Waktu Request</th>
-                        <th>Jenis Permintaan</th>
-                        <th>Rincian Request</th>
+                        <th>Name</th>
+                        <th>Division</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Action</th>
+
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($rdatrr as $redar): ?>
-                      
-                       
+                    <?php foreach($datuse as $duse): ?>
                       <tr>
-                        <td><?= $redar->date_request?></td>
-                        <td><?= $redar->time?></td>
-                        <td><?= $redar->jpermintaan?></td>
+                        <td><?= $duse->nama_pengguna?></td>
+                        <td><?= $duse->divisi?></td>
+                        <td><?= $duse->username?></td>
+                        <td><?= $duse->role?></td>
                         <td class=" d-flex align-items-center justify-content-center">
-                        <button class="btn btn-link" style="background-color: black; color: white; margin-right:10px" type="button" data-toggle="modal" data-target="#requestModal<?php echo $redar->id_request?>"><i class="fas fa-eye"></i> Request Detail</button>
-                        
+                        <a href="<?php echo site_url('rincian-user').'/'.$duse->id_pengguna?>"><button class="btn btn-link" style="background-color: #FFBF00; color: black; margin-right:10px"><i class="fas fa-edit"></i> Edit</button></a>
+                        <a href="<?php echo site_url('hapususer').'/'.$duse->id_pengguna?>" onclick="alert('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                         </td>
-                      </tr>
+                        
+                    </tr>
+                      <?php endforeach?>
                       
-                      
-                      
-                      
-                  <div class="modal fade" id="requestModal<?php echo $redar->id_request?>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="requestModalLabel">Request Details</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body border">
-                            <form action="#" method="get">
-                              <input type="hidden">
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Date Of Request</label>
-                              <span style="margin-left: 15%;">: <?php echo $redar->date_request?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Time Of Request</label>
-                              <span style="margin-left: 15%;">: <?php echo $redar->time?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Type Of Request</label>
-                              <span style="margin-left: 15%;">: <?php echo $redar->jpermintaan?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Items</label>
-                              <span style="margin-left: 32%;">: <?php echo $redar->kode_barang?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Description</label>
-                              <span style="margin-left: 23%;">: <?php echo $redar->description?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Approval Status</label>
-                              <span style="margin-left: 15%;">: <?php echo $redar->status_approve?></span>
-                            </div>
-                            <div class="form-group" style="padding-left: 5px;">
-                              <label for="nama" >Date Of Approval</label>
-                              <span style="margin-left: 13%;">: <?php echo $redar->date_approved?></span>
-                            </div>
-                            
-                            <div class="form-group" style="padding-left: 5px;">
-                                <label for="nama">Status Request</label>
-                                <span style="margin-left: 17%;">: <?php echo $redar->status_reques?></span>
-                            </div>
-
-                            <div class="form-group" style="padding-left: 5px;">
-                                <label for="nama">Solusi</label>
-                                <span style="margin-left: 31%;">: <?php echo $redar->solution?></span>
-                            </div>
-
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                  </div>
-                        <?php endforeach?>
-                      </tbody>
+                    </tbody>
                   </table>
-                  
-                      </div>
-                      
-                      
-                    </div>
                 </div>
-                
-              
+              </div>
             </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -289,7 +217,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; ICT Request <?php echo date("Y")?></span>
+            <span>Copyright &copy; ICT Request <?php echo date("Y")?></span>
             </div>
           </div>
         </footer>
@@ -298,7 +226,7 @@
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-    
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
@@ -359,6 +287,5 @@
 
     <!-- Page level custom scripts -->
     <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
-    <script src=<?=base_url('assets/js/requestdetails.js')?>></script>
   </body>
 </html>

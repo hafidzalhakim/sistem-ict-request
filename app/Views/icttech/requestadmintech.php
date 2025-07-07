@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request-DivisiICT</title>
+    <title>ICT Request</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -31,8 +31,6 @@
       href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
       rel="stylesheet"
     />
-    <!-- Custom Warna Table -->
-    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
   </head>
 
   <body id="page-top">
@@ -42,11 +40,11 @@
        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a href=<?=base_url('/admin')?> class="sidebar-brand d-flex align-items-center justify-content-center" >
             <div class="sidebar-brand-icon">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Divisi ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">ICT Request</sup></div>
         </a>
 
         <!-- Divider -->
@@ -54,36 +52,39 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Pengelola User</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
             <i class="fas fa-history"></i>
                 <span>Request</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Transaksi Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -116,7 +117,7 @@
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <div class="topbar-divider d-none d-sm-block"></div>
-
+              
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a
@@ -161,10 +162,16 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Inbox Request</h1>
+            <h3 class="h3 text-gray-800">ICT Request ICT Tech</h3>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
+            <a href="<?php echo site_url('tambahrequest-admin-tech') ?>">
+                    <button class="btn btn-link float-right w-100" style="background-color: #66CDAA;color:black">
+                        <i class="fas fa-plus"></i> Tambah Request
+                    </button>
+
+                    </a>
               <div class="card-body">
                 <div class="table-responsive">
                   <table
@@ -175,26 +182,83 @@
                   >
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Division</th>
-                        <th>Demand Type</th>
-                        <th>Date Of Request</th>
-                        <th>Assignment</th>
-                        <th>Data Print</th>
+                        <th>Tanggal Request</th>
+                        <th>Waktu Request</th>
+                        <th>Jenis Permintaan</th>
+                        <th>Rincian Request</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($rdataa as $reques): ?>
-                      <tr class="request">
-                        <td><?= $reques->nama_pengguna?></td>
-                        <td><?= $reques->divisi?></td>
-                        <td><?= $reques->jpermintaan?></td>
-                        <td><?= $reques->date_request?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
-                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
-                      </tr>
+                    <?php foreach($rdatrr as $redar): ?>
+                      <tr>
+                        <td><?= $redar->date_request?></td>
+                        <td><?= $redar->time?></td>
+                        <td><?= $redar->jpermintaan?></td>
+                        <td class=" d-flex align-items-center justify-content-center">
+                        <button class="btn btn-link" style="background-color: black; color: white; margin-right:10px" type="button" data-toggle="modal" data-target="#requestModal<?php echo $redar->id_request?>"><i class="fas fa-eye"></i> Request Detail</button>
+                        </td>
+                        
+                    </tr>
+                    <div class="modal fade" id="requestModal<?php echo $redar->id_request?>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="requestModalLabel">Request Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body border">
+                            <form action="#" method="get">
+                              <input type="hidden">
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Date Of Request</label>
+                              <span style="margin-left: 15%;">: <?php echo $redar->date_request?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Time Of Request</label>
+                              <span style="margin-left: 15%;">: <?php echo $redar->time?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Type Of Request</label>
+                              <span style="margin-left: 15%;">: <?php echo $redar->jpermintaan?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Items</label>
+                              <span style="margin-left: 32%;">: <?php echo $redar->kode_barang?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Description</label>
+                              <span style="margin-left: 23%;">: <?php echo $redar->description?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Approval Status</label>
+                              <span style="margin-left: 15%;">: <?php echo $redar->status_approve?></span>
+                            </div>
+                            <div class="form-group" style="padding-left: 5px;">
+                              <label for="nama" >Date Of Approval</label>
+                              <span style="margin-left: 13%;">: <?php echo $redar->date_approved?></span>
+                            </div>
+                            
+                            <div class="form-group" style="padding-left: 5px;">
+                                <label for="nama">Status Request</label>
+                                <span style="margin-left: 17%;">: <?php echo $redar->status_reques?></span>
+                            </div>
+
+                            <div class="form-group" style="padding-left: 5px;">
+                                <label for="nama">Solusi</label>
+                                <span style="margin-left: 31%;">: <?php echo $redar->solution?></span>
+                            </div>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                  </div>
                       <?php endforeach?>
-                      
                     </tbody>
                   </table>
                 </div>
@@ -209,7 +273,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-            <span>Copyright &copy; ICT Request <?php echo date("Y")?></span>
+              <span>Copyright &copy; ICT Request <?php echo date("Y")?></span>
             </div>
           </div>
         </footer>
@@ -279,8 +343,6 @@
 
     <!-- Page level custom scripts -->
     <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
-
-    <!-- script warna table -->
-    <script src=<?=base_url('assets/js/table.js')?>></script>
+    <script src=<?=base_url('assets/js/requestdetails.js')?>></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class KaryawanModel extends Model
+class RequestModel extends Model
 {
     protected $table = 'request';
     protected $primaryKey = 'id_request';
@@ -35,4 +35,6 @@ class KaryawanModel extends Model
     {
         return $this->db->table('request')->insert($inputdatarequ);
     }
+
+    
 }

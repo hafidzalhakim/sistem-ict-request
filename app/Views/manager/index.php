@@ -52,7 +52,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?=base_url('admin')?>">
+            <a class="nav-link" href="<?=base_url('manager')?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>

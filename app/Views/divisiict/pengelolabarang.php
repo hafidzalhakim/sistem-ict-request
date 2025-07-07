@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request-DivisiICT</title>
+    <title>Pengelola Barang-Divisi ICT</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -31,8 +31,6 @@
       href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
       rel="stylesheet"
     />
-    <!-- Custom Warna Table -->
-    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
   </head>
 
   <body id="page-top">
@@ -43,10 +41,10 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon">
+            <div class="sidebar-brand-icon ">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Divisi ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">Pengelola Barang-Divisi ICT</sup></div>
         </a>
 
         <!-- Divider -->
@@ -84,6 +82,8 @@
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -161,45 +161,57 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Inbox Request</h1>
-
+                  <a href="<?php echo site_url('tambahlainnya') ?>">
+                    <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black">
+                        <i class="fas fa-plus"></i> Tambah Lainnya
+                    </button>
+                  </a>
+                  <a href="<?php echo site_url('tambahbarang') ?>">
+                    <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black; margin-right:5px">
+                        <i class="fas fa-plus"></i> Tambah Barang
+                    </button>
+                  </a>
+            <h1 class="h3 mb-2 text-gray-800">Pengelola Barang</h1>
+           
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Division</th>
-                        <th>Demand Type</th>
-                        <th>Date Of Request</th>
-                        <th>Assignment</th>
-                        <th>Data Print</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($rdataa as $reques): ?>
-                      <tr class="request">
-                        <td><?= $reques->nama_pengguna?></td>
-                        <td><?= $reques->divisi?></td>
-                        <td><?= $reques->jpermintaan?></td>
-                        <td><?= $reques->date_request?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
-                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
-                      </tr>
-                      <?php endforeach?>
-                      
-                    </tbody>
-                  </table>
-                </div>
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Nama Pemakai</th>
+                                  <th>Kode Barang</th>
+                                  <th>SN Barang</th>
+                                  <th>Lokasi</th>
+                                  <th>Status Barang</th>
+                                  <th>Note</th>
+                                  <th>Gambar Barang</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach($datub as $duse): ?>
+                              <tr>
+                                  <td><?= $duse['nama_pengguna']?></td>
+                                  <td><?= $duse['kode_barang']?></td>
+                                  <td><?= $duse['serial_number']?></td>
+                                  <td><?= $duse['lokasi']?></td>
+                                  <td><?= $duse['kondisi']?></td>
+                                  <td><?= $duse['note']?></td>
+                                  <td><img style="max-width: 150px;" src="<?= base_url().'assets/image/'.$duse['gambar']?>" alt="gambarbarang"></td>
+                                  <td class="d-flex align-items-center justify-content-center">
+                                      <a href="<?php echo site_url('edit-barang').'/'.$duse['id_barang']?>"><button class="btn btn-link" style="background-color: #FFBF00; color: black; margin-right:10px"><i class="fas fa-edit"></i> Edit</button></a>
+                                      <a href="<?php echo site_url('hapusdb').'/'.$duse['id_barang']?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+                                  </td>
+                              </tr>
+                              <?php endforeach?>
+                          </tbody>
+                      </table>
+                  </div>
               </div>
-            </div>
+          </div>
+
           </div>
           <!-- /.container-fluid -->
         </div>
@@ -279,8 +291,5 @@
 
     <!-- Page level custom scripts -->
     <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
-
-    <!-- script warna table -->
-    <script src=<?=base_url('assets/js/table.js')?>></script>
   </body>
 </html>

@@ -1,50 +1,47 @@
 <?php
 namespace App\Controllers;
 use App\Models\LoginModel;
-use CodeIgniter\HTTP\RedirectResponse;
 
 class LoginController extends BaseController
 {
     protected $login;
-
     public function __construct()
     {
-        $this->login = new LoginModel();
+        $this->login =new LoginModel();
     }
-
     public function login()
     {
-        return view('manager/login');
+        return view('/login');
     }
 
     public function validasimasuk()
     {
         $session = session();
-        // menggunakan library validation
+        // menggunakan library validation 
         $validate = \Config\Services::validation();
-        // set rule from
+        // set rule form 
         $validate->setRules([
             'username' => 'required',
             'password' => 'required'
         ]);
 
-        //Menjalankan rule
+        // menjalankan rule 
         if (!$validate->withRequest($this->request)->run()) {
-            //Jika validasi gagal
+            // jika validasi gagal 
             $session->setFlashdata('error', 'failed');
             return redirect()->to('/login');
         }
 
-        //Mendapatkan data
+        // mendapatkan data 
         $username = esc($this->request->getPost('username'));
         $password = esc($this->request->getPost('password'));
 
-        //Validasi form input
-        //Query pengguna berdasarkan masukan form
+        // validasi form input 
+        //query pengguna berdasakan masukan form 
         $data = $this->login->validateUser($username, $password);
 
         if (!empty($data)) {
-            // set cookie
+            // set cookie 
             $session->set([
                 "id" => $data->id_pengguna,
                 "username" => $data->username,
@@ -54,7 +51,7 @@ class LoginController extends BaseController
                 "isLogin" => true
             ]);
 
-            //cek role pengguna
+            // cek role pengguna
             switch ($data->role) {
                 case 'manager':
                     $session->set('role', 'manager');
@@ -62,11 +59,15 @@ class LoginController extends BaseController
                     break;
                 case 'divisiict':
                     $session->set('role', 'divisiict');
-                    return redirect()->to('/divisiict');
+                    return redirect()->to('/divisi-ict');
+                    break;
+                case 'icttech':
+                    $session->set('role', 'icttech');
+                    return redirect()->to('/ict-tech');
                     break;
                 default:
-                    $session->set('role', 'karyawan');
-                    return redirect()->to('/karyawan');
+                    $session->set('role','karyawan');
+                    return redirect()->to('/ict-request');
                     break;
             }
         } else {
@@ -78,7 +79,11 @@ class LoginController extends BaseController
     public function logout()
     {
         $session = \Config\Services::session();
+
+
         $session->destroy();
+
+
         return redirect()->to('/login');
     }
 }

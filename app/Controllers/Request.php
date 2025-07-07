@@ -1,49 +1,48 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\KaryawanModel;
-use App\Models\UserModel;
+use App\Models\RequestModel;
 use App\Models\JenisPermintaandanBarangModel;
 use App\Models\AssignmentModel;
 
-class karyawan extends BaseController {
+class Request extends BaseController
+{
     protected $permintaan;
     protected $jp;
     protected $aas;
-
-    public function __construct(){
-        $this->permintaan = new KaryawanModel();
+    public function __construct()
+    {
+        $this->permintaan = new RequestModel();
         $this->jp = new JenisPermintaandanBarangModel();
         $this->aas = new AssignmentModel();
     }
-
-    public function reques() {
-        
-        
+    public function reques()
+    {
         // Periksa status login dan role pengguna
         $session = session();
         if (!$session->get('isLogin') || $session->get('role') !== 'karyawan') {
             // Jika pengguna tidak login atau bukan karyawan, redirect ke halaman login
             return redirect()->to('login');
         }
-
+        
         // Ambil ID pengguna dari sesi
-        $divisi = $session->get('divisi'); // Sesuaikan dengan kunci sesi yang anda gunakan
-
-        // Ambil data request yang dibuat olehg pengguna yang sedang login
+        $divisi = $session->get('divisi'); // Sesuaikan dengan kunci sesi yang Anda gunakan
+        
+        // Ambil data request yang dibuat oleh pengguna yang sedang login
         $rdatar = $this->permintaan->tampilData($divisi);
-
+        
         return view('karyawan/request', ['rdataarr'=>$rdatar]);
     }
 
-    public function tambahreques() {
+    public function tambahreques()
+    {
         $data = [
             'jenispermintaan' => $this->jp->AllJp(),
             'barang' => $this->jp->AllBrg()
         ];
         return view('karyawan/tambahrequest',$data);
     }
-     public function tambahrequ($id_pengguna = null)
+    public function tambahrequ($id_pengguna = null)
     {
         // Ambil ID pengguna dari sesi
         $id_pengguna = session()->get('id'); // Sesuaikan dengan kunci sesi yang Anda gunakan
@@ -59,6 +58,6 @@ class karyawan extends BaseController {
 
         $this->permintaan->tambahRequ($data);
         session()->setFlashdata('success', 'Request berhasil ditambahkan');
-        return redirect()->to(base_url('karyawan'));
+        return redirect()->to(base_url('ict-request'));
     }
 }

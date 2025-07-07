@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request-DivisiICT</title>
+    <title>ICT Request-ICT Tech</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -46,7 +46,7 @@
             <div class="sidebar-brand-icon">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Divisi ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">Admin ICT Request-Tech</sup></div>
         </a>
 
         <!-- Divider -->
@@ -54,36 +54,38 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Pengelola User</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
             <i class="fas fa-history"></i>
                 <span>Request</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Transaksi Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -184,14 +186,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($rdataa as $reques): ?>
+                    <?php foreach($dataar as $requ): ?>
                       <tr class="request">
-                        <td><?= $reques->nama_pengguna?></td>
-                        <td><?= $reques->divisi?></td>
-                        <td><?= $reques->jpermintaan?></td>
-                        <td><?= $reques->date_request?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
-                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
+                        <td><?= $requ->nama_pengguna?></td>
+                        <td><?= $requ->divisi?></td>
+                        <td><?= $requ->jpermintaan?></td>
+                        <td><?= $requ->date_request?></td>
+                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict-tech').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
+                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('rincian-data-print').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
                       </tr>
                       <?php endforeach?>
                       

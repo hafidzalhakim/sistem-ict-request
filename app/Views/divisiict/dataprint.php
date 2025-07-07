@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rincian Request-Area Manager</title>
+    <title>ICT Request-Report-AdminICT</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -23,6 +23,13 @@
 
     <!-- Custom styles for this template-->
     <link href=<?=base_url('assets/css/sb-admin-2.min.css')?> rel="stylesheet" />
+    <link
+      href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
+      rel="stylesheet"
+    />
+    <!-- Custom Warna Table -->
+    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
+
 
 </head>
 
@@ -39,7 +46,7 @@
                 <div class="sidebar-brand-icon">
                 <i class="fas fa-list-ul"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ICT Request Manager</div>
+                <div class="sidebar-brand-text mx-3">ICT Request Divisi ICT</sup></div>
             </a>
 
             <!-- Divider -->
@@ -47,10 +54,36 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('manager')?>">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Inbox Of Request</span></a>
-            </li>
+            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Inbox Of Request</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+                <i class="fas fa-fw fa-user-alt"></i>
+                <span>Pengelola User</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <i class="fas fa-history"></i>
+                <span>Request</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Barang</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Transaksi Barang</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <i class="fas fa-warehouse"></i>
+                <span>Pengelola Kondisi Barang</span></a>
+        </li>
 
 
             <!-- Divider -->
@@ -133,103 +166,91 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    
+                    <input style="float: right;" type="button" value="Print PDF"
+                        onclick="window.open('<?php echo site_url('printrequassigned/'.$rrinci->id_request) ?>','blank')">
                     <h1 class="h3 mb-4 text-gray-800">Rincian Request</h1>
+                    
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                                <div class="form-group" >
-                                    <label for="nama_pengguna">Name</label>
-                                    <span style="margin-left: 15%;" >: <?php echo $rrincir->nama_pengguna ?></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="divisi">Division</label>
-                                    <span style="margin-left: 14%;" >: <?php echo $rrincir->divisi ?></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="date_request">Date Of Request</label>
-                                    <span style="margin-left: 9%;" >: <?php echo $rrincir->date_request ?></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <span style="margin-left: 16%;" >: <?php echo $rrincir->time ?></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="jenis_permintaan">Jenis Permintaan</label>
-                                    <span style="margin-left: 9%;" >: <?php echo $rrincir->jpermintaan ?></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="barang">Barang</label>
-                                    <span style="margin-left: 14.5%;" >: <?php echo $rrincir->kode_barang ?></span>
-                                </div>
-                                <div class="form-group">
-                                  <label for="description">Description</label>
-                                  <span style="margin-left: 12%;" >: <?php echo $rrincir->description ?></span>
-                              </div>
-                              
-                            
+                          <div class="table-responsive">
+                            <table class="table table-bordered">
+                            <thead>
+                      <tr>
+                        <th>Date Of Request</th>
+                        <th>Time Of Request</th>
+                        <th>Name</th>
+                        <th>Division</th>
+                        <th>Demand Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php if($rrinci):?>
+                      <tr>
+                        <td><?php echo $rrinci->date_request?></td>
+                        <td><?php echo $rrinci->time?></td>
+                        <td><?php echo $rrinci->nama_pengguna?></td>
+                        <td><?php echo $rrinci->divisi?></td>
+                        <td><?php echo $rrinci->jpermintaan?></td>
+                        <td><?php echo $rrinci->description?></td>
+                      </tr>
+                      <?php endif?>
+                    </tbody>
+                            </table>
+                          </div>
+                          <div class="table-responsive float-right">
+                            <table class="table table-bordered">
+                            <thead>
+                      <tr>
+                        <th>Status Of Request</th>
+                        <th>Assigned To</th>
+                        <th>Date Of Assignment</th>
+                        <th>Work Status</th>
+                        <th>Date Complete</th>
+                        <th>Solution</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php if($rrincip):?>
+                      <tr>
+                        <td><?php echo $rrincip->status_request?></td>
+                        <td><?php echo $rrincip->assigned?></td>
+                        <td><?php echo $rrincip->date_assign?></td>
+                        <td><?php echo $rrincip->status_pengerjaan?></td>
+                        <td><?php echo $rrincip->date_complete?></td>
+                        <td><?php echo $rrincip->solusi?></td>
+                      </tr>
+                      <?php endif?>
+                    </tbody>
+                            </table>
+                          </div>
+                          <div class="table-responsive float-right">
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Approver</th>
+                                  <th>Position</th>
+                                  <th>Status Of Approval</th>
+                                  <th>Date Of Approval</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <?php if($rriinciip):?>
+                                <tr>
+                                  <td><?php echo $rriinciip->nama_pengguna?></td>
+                                  <td><?php echo $rriinciip->divisi?></td>
+                                  <td><?php echo $rriinciip->status?></td>
+                                  <td><?php echo $rriinciip->date_approve?></td>
+                                </tr>
+                                <?php endif?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                     </div>
                     
-                    </div>
-                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#approveModal"><i class="fas fa-plus"></i>Add Approval</button>
-                    <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="assigntModalLabel">Request Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                               </button>
-                              </div>
-                              <form action="<?php echo site_url('proseseditrincian') ?>" method="post" enctype="multipart/form-data" >
-                            <input type="hidden" name="id_request" id="id_request" value="<?php echo $rrincir->id_request?>">
-                            <div class="modal-body">
-                              <div class="form-group">
-                                    <label for="date_approve">Date Of Approval</label>
-                                    <input type="date" name="date_approve" id="date_approve" class="form-control" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d')?>">
-                                </div>
-                            </div>
-                          <div class="modal-footer">
-                                <div class="form-group">
-                                <button class="btn btn-success" name="status" value="approved" style="float: right;">Approve</button>
-                                </div>
-                                <div class="form-group">
-                                <button class="btn btn-success" name="status" value="not approved" style="float: right; margin-right:10px">Not Approve</button>
-                                </div>
-                                <div class="form-group">
-                                <button type="button" class="btn btn-danger" style="float: right; margin-right:10px" data-dismiss="modal">Cancel</button>
-                                </div>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                      </div>
-
-                      <h1 class="h3 mb-4 text-gray-800">Approval</h1>
-                    <div class="card shadow mb-4">
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Status Of Approval</th>
-                                <th>Date Of Approval</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            <?php if($rrinciir):?>
-                              <tr>
-                                <td><?php echo $rrinciir->status ?></td>
-                                <td><?php echo $rrinciir->date_approve ?></td>
-                              </tr>
-                            <?php endif?>
-                            </tbody>
-                          </table>
-                          
-                        </div>
-                        <div class="form-group">
-                                <a href="<?=base_url('admin')?>" class="btn btn-danger" style="float: right; margin-right:10px">Cancel</a>
-                        </div>  
-                    </div>
-                    </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -256,7 +277,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+                    
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -286,6 +307,16 @@
 
     <!-- Custom scripts for all pages-->
     <script src=<?=base_url('assets/js/sb-admin-2.min.js')?>></script>
+
+    <!-- Page level plugins -->
+    <script src=<?=base_url('assets/vendor/datatables/jquery.dataTables.min.js')?>></script>
+    <script src=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js')?>></script>
+
+    <!-- Page level custom scripts -->
+    <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
+
+    <!-- script warna table -->
+    <script src=<?=base_url('assets/js/table.js')?>></script>
 
 </body>
 

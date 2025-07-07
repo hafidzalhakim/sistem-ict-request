@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Request-DivisiICT</title>
+    <title>Pengelola User-ICT Tech</title>
 
     <!-- Custom fonts for this template -->
     <link
@@ -31,8 +31,6 @@
       href=<?=base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>
       rel="stylesheet"
     />
-    <!-- Custom Warna Table -->
-    <link rel="stylesheet" href=<?=base_url('assets/css/table.css')?>>
   </head>
 
   <body id="page-top">
@@ -46,7 +44,7 @@
             <div class="sidebar-brand-icon">
             <i class="fas fa-list-ul"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Divisi ICT Request</sup></div>
+            <div class="sidebar-brand-text mx-3">Pengelola User-ICT Tech</sup></div>
         </a>
 
         <!-- Divider -->
@@ -54,33 +52,34 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('divisi-ict')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-tech')?>>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Inbox Of Request</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-user')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-user-ict-tech')?>>
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Pengelola User</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('ict-request-admin')?>>
+            <a class="nav-link" href=<?php echo site_url('ict-request-admin-tech')?>>
             <i class="fas fa-history"></i>
                 <span>Request</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-transaksi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Transaksi Barang</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang')?>>
+            <a class="nav-link" href=<?php echo site_url('pengelola-kondisi-barang-ict')?>>
             <i class="fas fa-warehouse"></i>
                 <span>Pengelola Kondisi Barang</span></a>
         </li>
@@ -161,8 +160,14 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Inbox Request</h1>
+            <a href="<?php echo site_url('tambahpengguna-ict-tech') ?>">
+                    <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black">
+                        <i class="fas fa-plus"></i> Tambah Pengguna
+                    </button>
 
+                    </a>
+            <h1 class="h3 mb-2 text-gray-800">Pengelola Users</h1>
+            
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-body">
@@ -177,22 +182,25 @@
                       <tr>
                         <th>Name</th>
                         <th>Division</th>
-                        <th>Demand Type</th>
-                        <th>Date Of Request</th>
-                        <th>Assignment</th>
-                        <th>Data Print</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Action</th>
+
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($rdataa as $reques): ?>
-                      <tr class="request">
-                        <td><?= $reques->nama_pengguna?></td>
-                        <td><?= $reques->divisi?></td>
-                        <td><?= $reques->jpermintaan?></td>
-                        <td><?= $reques->date_request?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
-                        <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
-                      </tr>
+                    <?php foreach($datus as $dus): ?>
+                      <tr>
+                        <td><?= $dus->nama_pengguna?></td>
+                        <td><?= $dus->divisi?></td>
+                        <td><?= $dus->username?></td>
+                        <td><?= $dus->role?></td>
+                        <td class=" d-flex align-items-center justify-content-center">
+                        <a href="<?php echo site_url('rincian-user-ict-tech').'/'.$dus->id_pengguna?>"><button class="btn btn-link" style="background-color: #FFBF00; color: black; margin-right:10px"><i class="fas fa-edit"></i> Edit</button></a>
+                        <a href="<?php echo site_url('hapususer-ict-tech').'/'.$dus->id_pengguna?>" onclick="alert('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+                        </td>
+                        
+                    </tr>
                       <?php endforeach?>
                       
                     </tbody>
@@ -279,8 +287,5 @@
 
     <!-- Page level custom scripts -->
     <script src=<?=base_url('assets/js/demo/datatables-demo.js')?>></script>
-
-    <!-- script warna table -->
-    <script src=<?=base_url('assets/js/table.js')?>></script>
   </body>
 </html>
