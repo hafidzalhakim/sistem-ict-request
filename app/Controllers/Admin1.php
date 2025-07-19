@@ -30,4 +30,25 @@ class Admin1 extends BaseController
     return view('manager/index', $datar);
     }
 
+    public function kirimemail()
+    {
+        $email = \Config\Services::email();
+
+        $tujuanemail = ['hafidz.alhakim.16@gmail.com'];
+        $email->setTo($tujuanemail);
+        $asalpengirim = "hafidz21si@mahasiswa.pcr.ac.id";
+        $email->setFrom($asalpengirim);
+        $subject = "Test Masuk";
+        $email->setSubject($subject);
+        $pesan = "Hola Amigos";
+        $email->setMessage($pesan);
+
+        if($email->send()){
+            echo "<h1>Berhasil Dude</h1>";
+        }else{
+            echo "<h1>Sorry Fellas</h1>";
+        }
+        
+    }
+
 }

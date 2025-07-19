@@ -13,6 +13,12 @@ class AdminModel extends Model
 
     public function tampilDataTabel()
     {
+        $approveTerbaru = $this->db->table("approve");
+        $approveTerbaru->select('id_request');
+        $approveTerbaru->selectMax("date_approve");
+        $approveTerbaru->groupBy('id_request');
+        $queryTerbaru = $approveTerbaru->get();
+        
         $builder = $this->db->table('request');
         $builder->join('pengguna', 'pengguna.id_pengguna = request.id_pengguna');
         
@@ -20,7 +26,20 @@ class AdminModel extends Model
         $builder->join('divisi', 'divisi.id_divisi = pengguna.id_divisi');
         $builder->where('request.akses', 'Perlu Approval');
         $query = $builder->get();
-        return $query->getResult();
+
+        $approveData = $queryTerbaru->getResult();
+        $requestData = $query->getResult();
+        
+        $dataCampur = [];
+
+        foreach ($requestData as $index => $dataRequest) {
+            $data = array_filter($approveData, fn ($approve) => $approve->id_request === $dataRequest->id_request) ?? null;
+            $data = reset($data);
+            $dataRequest->latest_approved = $data->date_approve ?? null;
+            $dataCampur[] = $dataRequest;
+        }
+        
+        return $dataCampur;
     }
     public function tampilDataTabel2()
     {

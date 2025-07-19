@@ -196,7 +196,7 @@
                           <thead>
                             <tr>
                               <th>Kode Barang</th>
-                              <th>Status Of Approval</th>
+                              <!-- <th>Status Of Approval</th> -->
                               <th>Date Of Approval</th>
                               <th>Description</th>
                               <th>Need Approval</th>
@@ -209,7 +209,7 @@
                           <?php if($rrinc):?>
                             <tr>
                         <td><?php echo $rrinc->kode_barang?></td>
-                        <td><?php echo $rrinc->status_approve?></td>
+                        <!-- <td><?php echo $rrinc->status_approve?></td> -->
                         <td><?php echo $rrinc->date_approved?></td>
                         <td><?php echo $rrinc->description?></td>
                         <td><?php echo $rrinc->akses?></td>
@@ -266,12 +266,12 @@
                                   <input type="date" name="date_approved" id="date_approve" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="status_approve">Status Of Approval</label><br>
+                                    <!-- <label for="status_approve">Status Of Approval</label><br>
                                     <select name="status_approve" id="status_approve" class="form-control">
                                       <option value="" selected disabled >---Option---</option>
                                       <option value="approved" <?php if ($rrinc->status_approve === 'approved') echo 'selected'; ?>>Approved</option>
                                       <option value="not approved" <?php if ($rrinc->status_approve === 'not approved') echo 'selected'; ?> >Not Approved</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="form-group">
                                     <label for="Solution">Solutions</label><br>

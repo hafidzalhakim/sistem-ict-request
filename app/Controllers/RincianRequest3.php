@@ -76,7 +76,7 @@ class RincianRequest3 extends BaseController
         $email = \Config\Services::email();
         
         $email->setTo($tujuanemail);
-        $asalpengirim = "northillusef@gmail.com";
+        $asalpengirim = "hafidz21si@mahasiswa.pcr.ac.id";
         $email->setFrom($asalpengirim);
         
         $email->setSubject($subject);

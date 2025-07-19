@@ -8,6 +8,7 @@ class PengelolaBarangTransaksiController extends BaseController
 {
     protected $jpb;
     protected $us;
+
     public function __construct()
     {
         $this->jpb = new JenisPermintaandanBarangModel();

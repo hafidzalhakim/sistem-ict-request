@@ -57,11 +57,9 @@
 <body>
 <div class="container" style="border: 2px solid #000;">
     <div class="container">
-        <img src=<?=base_url('assets/image/emp.png')?> alt="logo">
+        <img src=<?= $logo ?> alt="logo">
 
         <div class="judul"><b>ICT SERVICES REQUEST/PROBLEM REPORT</b></div>
-
-
 
     </div>
     <div class="container">
@@ -163,7 +161,7 @@
                     <table class="inner-table">
                         <tr>
                             <td style="height:15px; width:10%"></td>
-                            <td style="height:15px; width:10%"><?php if($rrincip):?><?php echo $rrincip->assigned?><?php endif?></td>
+                            <td style="height:15px; width:10%"><?php if($rrincip):?><?php echo $rrincip->assigned_user_name?><?php endif?></td>
                             <td style="height:15px; width:15%"><?php if($rrincip):?><?php echo $rrincip->date_assign?><?php endif?></td>
                             <td style="height:15px; width:15%"><?php if($rrincip):?><?php echo $rrincip->date_complete?><?php endif?></td>
                         </tr>

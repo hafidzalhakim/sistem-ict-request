@@ -35,7 +35,7 @@ class PengelolaUserController extends BaseController
        return redirect()->to('login');
     }
         $datause = $this->ser->getAllDataUser();
-        return view('icttech/pengelolausers2',['datus'=>$datause]);
+        return view('icttech/pengelolauser2',['datus'=>$datause]);
     }
 
     public function tampilrincian($id_pengguna)

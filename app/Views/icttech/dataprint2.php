@@ -216,7 +216,7 @@
                       <?php if($rrincip):?>
                       <tr>
                         <td><?php echo $rrincip->status_request?></td>
-                        <td><?php echo $rrincip->assigned?></td>
+                        <td><?php echo $rrincip->assigned_user_name?></td>
                         <td><?php echo $rrincip->date_assign?></td>
                         <td><?php echo $rrincip->status_pengerjaan?></td>
                         <td><?php echo $rrincip->date_complete?></td>

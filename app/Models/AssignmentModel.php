@@ -42,10 +42,13 @@ class AssignmentModel extends Model
     }
 
     public function tampilDataAssignPrint($id_request) {
-        return $this->db->table('request')
-                        ->select('*')
+        $data= $this->db->table('request')
+                            ->select('*, 
+                            assigned_user.nama_pengguna as assigned_user_name,
+                            divisi.divisi')
                         ->join('pengguna', 'pengguna.id_pengguna = request.id_pengguna')
                         ->join('assignment', 'request.id_request = assignment.id_request')
+                        ->join('pengguna as assigned_user', 'assigned_user.id_pengguna = assignment.assigned') // yang menerima tugas
                         ->join('jenis_permintaan', 'jenis_permintaan.id_jpermintaan = request.id_jpermintaan')
                         ->join('barang', 'barang.id_barang = request.id_barang')
                         ->join('divisi', 'divisi.id_divisi = pengguna.id_divisi')
@@ -57,6 +60,9 @@ class AssignmentModel extends Model
                         })
                         ->get()
                         ->getRow();// Mengembalikan satu baris sebagai objek  
+
+                        
+                        return $data;
     }
 
     public function tambahAssign($inputdataassign)

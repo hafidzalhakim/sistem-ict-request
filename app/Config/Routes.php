@@ -106,3 +106,4 @@ $routes->post('prosesubahrequ/(:any)', 'RincianRequest3::ubahreques/$1');
 #Manager
 $routes->get('rincian-request-approve/(:any)', 'RincianRequest1::rincianrequest1/$1');
 $routes->post('proseseditrincian', 'RincianRequest1::simpanapprove');
+$routes->get('kirimemailn', 'Admin1::kirimemail');

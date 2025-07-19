@@ -154,6 +154,7 @@
                         <th>Time</th>
                         <th>Date Of Request</th>
                         <th>Date Of Approval</th>
+                        <th>Jenis Permintaan</th>
                         <th>Check Of Request</th>
                       </tr>
                     </thead>
@@ -164,6 +165,7 @@
                         <td><?= $reque->divisi?></td>
                         <td><?= $reque->time?></td>
                         <td><?= $reque->date_request?></td>
+                        <td><?= $reque->latest_approved ?? "Belum Approve"?></td>
                         <td><?= $reque->jpermintaan?></td>
                         <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-approve').'/'.$reque->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Check</button></a></td>
                       </tr>
