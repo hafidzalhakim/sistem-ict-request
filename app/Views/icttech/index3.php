@@ -180,6 +180,7 @@
                         <th>Name</th>
                         <th>Division</th>
                         <th>Demand Type</th>
+                        <th>Description</th>
                         <th>Date Of Request</th>
                         <th>Assignment</th>
                         <th>Data Print</th>
@@ -191,6 +192,7 @@
                         <td><?= $requ->nama_pengguna?></td>
                         <td><?= $requ->divisi?></td>
                         <td><?= $requ->jpermintaan?></td>
+                        <td><?= $requ->description?></td>
                         <td><?= $requ->date_request?></td>
                         <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict-tech').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
                         <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('rincian-data-print').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>

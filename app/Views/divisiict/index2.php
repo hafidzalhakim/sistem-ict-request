@@ -178,6 +178,7 @@
                         <th>Name</th>
                         <th>Division</th>
                         <th>Demand Type</th>
+                        <th>Description</th>
                         <th>Date Of Request</th>
                         <th>Assignment</th>
                         <th>Data Print</th>
@@ -189,6 +190,7 @@
                         <td><?= $reques->nama_pengguna?></td>
                         <td><?= $reques->divisi?></td>
                         <td><?= $reques->jpermintaan?></td>
+                        <td><?= $reques->description?></td>
                         <td><?= $reques->date_request?></td>
                         <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
                         <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('data-print-rincian').'/'.$reques->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
