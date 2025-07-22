@@ -13,33 +13,37 @@ class Admin2 extends BaseController
         // Inisialisasi objek model AdminModel di dalam konstruktor
         $this->reque = new AdminModel();
     }
-    
-public function tampildata2()
-{
-    $session = session();
-    if (!$session->get('isLogin') || $session->get('role') !== 'divisiict') {
-        return redirect()->to('login');
+
+    // Halaman utama divisiict (jika user klik logo kiri atas)
+    public function index()
+    {
+        return redirect()->to('divisiict'); // arahkan ke tampildata2()
     }
 
-    $allRequests = $this->reque->tampilDataTabel2();
+    public function tampildata2()
+    {
+        $session = session();
+        if (!$session->get('isLogin') || $session->get('role') !== 'divisiict') {
+            return redirect()->to('login');
+        }
 
-    // Hitung total request
-    $totalRequest = count($allRequests);
+        $allRequests = $this->reque->tampilDataTabel2();
 
-    // Hitung yang selesai
-    $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'done'));
+        // Hitung total request
+        $totalRequest = count($allRequests);
 
-    // Misal total barang = jumlah request unik berdasarkan barang
-    $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
-    $totalBarang = count(array_filter($barangUnik)); // filter null
+        // Hitung yang selesai
+        $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'done'));
 
-    return view('divisiict/index2', [
-        'rdataa'        => $allRequests,
-        'totalRequest' => $totalRequest,
-        'totalSelesai' => $totalSelesai,
-        'totalBarang'  => $totalBarang,
-    ]);
-}
+        // Hitung total barang unik
+        $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
+        $totalBarang = count(array_filter($barangUnik)); // filter null
 
-
+        return view('divisiict/index2', [
+            'rdataa'        => $allRequests,
+            'totalRequest'  => $totalRequest,
+            'totalSelesai'  => $totalSelesai,
+            'totalBarang'   => $totalBarang,
+        ]);
+    }
 }
