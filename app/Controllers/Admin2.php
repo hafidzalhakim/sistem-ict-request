@@ -14,20 +14,32 @@ class Admin2 extends BaseController
         $this->reque = new AdminModel();
     }
     
-    public function tampildata2()
-    {
-   // Periksa status login dan role pengguna
-   $session = session();
-   if (!$session->get('isLogin') || $session->get('role') !== 'divisiict') {
-       // Jika pengguna tidak login atau bukan admin, redirect ke halaman login
-       return redirect()->to('login');
+public function tampildata2()
+{
+    $session = session();
+    if (!$session->get('isLogin') || $session->get('role') !== 'divisiict') {
+        return redirect()->to('login');
     }
 
-    // Panggil metode getAllDataTable dari objek model AdminModel
-    $datarr['rdataa'] = $this->reque->tampilDataTabel2();
-    
-    // Kirim data ke view
-    return view('divisiict/index2', $datarr);
+    $allRequests = $this->reque->tampilDataTabel2();
+
+    // Hitung total request
+    $totalRequest = count($allRequests);
+
+    // Hitung yang selesai
+    $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'done'));
+
+    // Misal total barang = jumlah request unik berdasarkan barang
+    $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
+    $totalBarang = count(array_filter($barangUnik)); // filter null
+
+    return view('divisiict/index2', [
+        'rdataa'        => $allRequests,
+        'totalRequest' => $totalRequest,
+        'totalSelesai' => $totalSelesai,
+        'totalBarang'  => $totalBarang,
+    ]);
 }
+
 
 }
