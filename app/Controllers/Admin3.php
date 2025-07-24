@@ -23,11 +23,24 @@ class Admin3 extends BaseController
        return redirect()->to('login');
     }
 
-    // Panggil metode getAllDataTable dari objek model AdminModel
-    $atarr['dataar'] = $this->reques->tampilDataTabel3();
-    
-    // Kirim data ke view
-    return view('icttech/index3', $atarr);
+    $allRequests = $this->reques->tampilDataTabel3();
+
+        // Hitung total request
+        $totalRequest = count($allRequests);
+
+        // Hitung yang selesai
+        $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'done'));
+
+        // Hitung total barang unik
+        $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
+        $totalBarang = count(array_filter($barangUnik)); // filter null
+
+        return view('icttech/index3', [
+            'dataar'        => $allRequests,
+            'totalRequest'  => $totalRequest,
+            'totalSelesai'  => $totalSelesai,
+            'totalBarang'   => $totalBarang,
+        ]);
 }
 
 }

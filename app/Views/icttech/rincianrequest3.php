@@ -419,8 +419,8 @@
                                     <label for="assigned">Assign To</label><br>
                                     <select name="assignededit" id="assignededit" class="form-control">
                                       <option value="" selected disabled>---Option---</option>
-                                      <option value="Fadel"<?php if ($rrin->assigned === 'Fadel') echo 'selected'; ?>>Fadel</option>
-                                      <option value="Wanda"<?php if ($rrin->assigned === 'Wanda') echo 'selected'; ?>>Wanda</option>
+                                      <option value="Fadel"<?php if ($rrin->assigned === 'Jono') echo 'selected'; ?>>Jono</option>
+                                      <option value="Wanda"<?php if ($rrin->assigned === 'Roy') echo 'selected'; ?>>Roy</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
