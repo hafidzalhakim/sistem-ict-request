@@ -33,7 +33,7 @@ class Admin2 extends BaseController
         $totalRequest = count($allRequests);
 
         // Hitung yang selesai
-        $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'done'));
+        $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'Done'));
 
         // Hitung total barang unik
         $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));

@@ -115,55 +115,55 @@
           <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">Inbox Request</h1>
 
-<div class="row mb-4">
-  <div class="col-xl-4 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Request</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalRequest ?></div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="row mb-4">
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Request</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalRequest ?></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  <div class="col-xl-4 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Request Selesai</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalSelesai ?></div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Request Selesai</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalSelesai ?></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  <div class="col-xl-4 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Barang</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalBarang ?></div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Barang</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalBarang ?></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-boxes fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-auto">
-            <i class="fas fa-boxes fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
             <div class="card shadow mb-4">
@@ -190,7 +190,7 @@
                         <td><?= $reques->jpermintaan?></td>
                         <td><?= $reques->description?></td>
                         <td><?= $reques->date_request?></td>
-                        <td><?= $reques->status_reques?></td>
+                        <td><span style="background-color: <?= $reques->status_reques === 'Done' ? '#d4edda' : ($reques->status_reques === 'On progress' ? '#fff3cd' : 'transparent'); ?>; color: <?= $reques->status_reques === 'Done' ? '#155724' : ($reques->status_reques === 'On progress' ? '#856404' : '#000'); ?>; padding: 4px 8px; border-radius: 4px; font-weight: bold; display: inline-block;"><?= $reques->status_reques ?></span></td>
                         <td class="d-flex align-items-center justify-content-center"><a href=<?= site_url('rincian-request-ict').'/'.$reques->id_request ?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
                         <td class="align-items-center justify-content-center"><a href=<?= site_url('data-print-rincian').'/'.$reques->id_request ?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
                       </tr>

@@ -243,7 +243,7 @@
                         <td><?= $requ->jpermintaan?></td>
                         <td><?= $requ->description?></td>
                         <td><?= $requ->date_request?></td>
-                        <td><?= $requ->status_reques?></td>
+                        <td><span style="background-color: <?= $requ->status_reques === 'Done' ? '#d4edda' : ($requ->status_reques === 'On progress' ? '#fff3cd' : 'transparent'); ?>; color: <?= $requ->status_reques === 'Done' ? '#155724' : ($requ->status_reques === 'On progress' ? '#856404' : '#000'); ?>; padding: 4px 8px; border-radius: 4px; font-weight: bold; display: inline-block;"><?= $requ->status_reques ?></span></td>
                         <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-ict-tech').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Assign</button></a></td>
                         <td class="  align-items-center justify-content-center"><a href=<?php echo site_url('rincian-data-print').'/'.$requ->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Print</button></a></td>
                       </tr>

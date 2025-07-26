@@ -158,6 +158,8 @@
                         <th>Tanggal Request</th>
                         <th>Waktu Request</th>
                         <th>Jenis Permintaan</th>
+                        <th>Deskripsi</th>
+                        <th>Status</th>
                         <th>Rincian Request</th>
                       </tr>
                     </thead>
@@ -167,9 +169,10 @@
                         <td><?= $rdar->date_request?></td>
                         <td><?= $rdar->time?></td>
                         <td><?= $rdar->jpermintaan?></td>
+                        <td><?= $rdar->description?></td>
+                        <td><span style="background-color: <?= $rdar->status_reques === 'Done' ? '#d4edda' : ($rdar->status_reques === 'On progress' ? '#fff3cd' : 'transparent'); ?>; color: <?= $rdar->status_reques === 'Done' ? '#155724' : ($rdar->status_reques === 'On progress' ? '#856404' : '#000'); ?>; padding: 4px 8px; border-radius: 4px; font-weight: bold; display: inline-block;"><?= $rdar->status_reques ?></span></td>
                         <td class=" d-flex align-items-center justify-content-center">
                         <button class="btn btn-link" style="background-color: black; color: white; margin-right:10px" type="button" data-toggle="modal" data-target="#requestModal<?php echo $rdar->id_request?>">Periksa</button>
-
                         </td>
                         
                     </tr>
