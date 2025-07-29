@@ -163,6 +163,10 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Edit Barang</h1>
                     <div class="card shadow mb-4">
+
+                    <?php 
+                    
+                    ?>
                         
                         <div class="card-body">
                             <form action="<?php echo site_url('proseseditbarang/'.$datubad['id_barang']) ?>" method="post" enctype="multipart/form-data">

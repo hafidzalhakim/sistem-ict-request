@@ -208,10 +208,10 @@
                               <label for="nama" >Description</label>
                               <span style="margin-left: 23%;">: <?php echo $rdar->description?></span>
                             </div>
-                            <div class="form-group" style="padding-left: 5px;">
+                            <!-- <div class="form-group" style="padding-left: 5px;">
                               <label for="nama" >Approval Status</label>
                               <span style="margin-left: 15%;">: <?php echo $rdar->status_approve?></span>
-                            </div>
+                            </div> -->
                             <div class="form-group" style="padding-left: 5px;">
                               <label for="nama" >Date Of Approval</label>
                               <span style="margin-left: 13%;">: <?php echo $rdar->date_approved?></span>

@@ -16,23 +16,23 @@ class Request extends BaseController
         $this->jp = new JenisPermintaandanBarangModel();
         $this->aas = new AssignmentModel();
     }
-    public function reques()
-    {
-        // Periksa status login dan role pengguna
-        $session = session();
-        if (!$session->get('isLogin') || $session->get('role') !== 'karyawan') {
-            // Jika pengguna tidak login atau bukan karyawan, redirect ke halaman login
-            return redirect()->to('login');
+        public function reques()
+        {
+            // Periksa status login dan role pengguna
+            $session = session();
+            if (!$session->get('isLogin') || $session->get('role') !== 'karyawan') {
+                // Jika pengguna tidak login atau bukan karyawan, redirect ke halaman login
+                return redirect()->to('login');
+            }
+            
+            // Ambil ID pengguna dari sesi
+            $divisi = $session->get('divisi'); // Sesuaikan dengan kunci sesi yang Anda gunakan
+            
+            // Ambil data request yang dibuat oleh pengguna yang sedang login
+            $rdatar = $this->permintaan->tampilData($divisi);
+            
+            return view('karyawan/request', ['rdataarr'=>$rdatar]);
         }
-        
-        // Ambil ID pengguna dari sesi
-        $divisi = $session->get('divisi'); // Sesuaikan dengan kunci sesi yang Anda gunakan
-        
-        // Ambil data request yang dibuat oleh pengguna yang sedang login
-        $rdatar = $this->permintaan->tampilData($divisi);
-        
-        return view('karyawan/request', ['rdataarr'=>$rdatar]);
-    }
 
     public function tambahreques()
     {

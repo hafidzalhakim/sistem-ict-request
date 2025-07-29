@@ -33,7 +33,8 @@ class Admin3 extends BaseController
 
         // Hitung total barang unik
         $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
-        $totalBarang = count(array_filter($barangUnik)); // filter null
+        $db = \Config\Database::connect();
+        $totalBarang = $db->table('barang')->countAll();
 
         return view('icttech/index3', [
             'dataar'        => $allRequests,

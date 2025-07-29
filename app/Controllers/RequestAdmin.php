@@ -17,6 +17,7 @@ class RequestAdmin extends BaseController
         $this->jp = new JenisPermintaandanBarangModel();
         $this->aas = new AssignmentModel();
     }
+
     public function reques()
     {
         // Periksa status login dan role pengguna
@@ -47,6 +48,7 @@ class RequestAdmin extends BaseController
         ];
         return view('divisiict/tambahrequestadmin',$data);
     }
+
     public function tambahrequ($id_pengguna = null)
     {
         // Ambil ID pengguna dari sesi
@@ -99,7 +101,7 @@ class RequestAdmin extends BaseController
     public function tambahrequ2($id_pengguna = null)
     {
         // Ambil ID pengguna dari sesi
-        $id_pengguna = session()->get('id'); // Sesuaikan dengan kunci sesi yang Anda gunakan
+        $id_pengguna = session()->get('id');
         
         $data = [
             'id_pengguna' => $id_pengguna, // Set ID pengguna yang sedang login

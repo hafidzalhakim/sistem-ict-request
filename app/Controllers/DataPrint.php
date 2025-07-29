@@ -81,10 +81,6 @@ class DataPrint extends BaseController
         $dompdf->stream('ICT Request Report.pdf', array(
             "Attachment" => false
         ));
-
-        // return view('admin/print');
-
-
     }
 
 

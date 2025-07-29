@@ -34,6 +34,8 @@ class PengelolaJenisPermintaandanBarangController extends BaseController
             'datuk' => $this->jpb->AllKondisi(),
             'validation'=>\Config\Services::validation()
         ];
+
+        
         return view('divisiict/tambahbarang', $data);
     }
 
@@ -76,6 +78,13 @@ class PengelolaJenisPermintaandanBarangController extends BaseController
             'datubad'=> $this->jpb->getAllBrgById($id_barang),
             'validation'=>\Config\Services::validation()
         ];
+
+        
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+        // die;
+        
         return view('divisiict/editbarang', $data);
     }
 
