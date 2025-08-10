@@ -30,6 +30,7 @@ class Admin3 extends BaseController
 
         // Hitung yang selesai
         $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'Done'));
+        $totalBelumSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'On progress'));
 
         // Hitung total barang unik
         $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
@@ -37,10 +38,11 @@ class Admin3 extends BaseController
         $totalBarang = $db->table('barang')->countAll();
 
         return view('icttech/index3', [
-            'dataar'        => $allRequests,
-            'totalRequest'  => $totalRequest,
-            'totalSelesai'  => $totalSelesai,
-            'totalBarang'   => $totalBarang,
+            'dataar'            => $allRequests,
+            'totalRequest'      => $totalRequest,
+            'totalSelesai'      => $totalSelesai,
+            'totalBelumSelesai' => $totalBelumSelesai,
+            'totalBarang'       => $totalBarang,
         ]);
 }
 

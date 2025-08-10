@@ -161,11 +161,11 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-                  <a href="<?php echo site_url('tambahlainnya') ?>">
+                  <!-- <a href="<?php echo site_url('tambahlainnya') ?>">
                     <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black">
                         <i class="fas fa-plus"></i> Tambah Lainnya
                     </button>
-                  </a>
+                  </a> -->
                   <a href="<?php echo site_url('tambahbarang') ?>">
                     <button class="btn btn-link float-right" style="background-color: #7FFF00;color:black; margin-right:5px">
                         <i class="fas fa-plus"></i> Tambah Barang

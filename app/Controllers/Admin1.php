@@ -30,6 +30,36 @@ class Admin1 extends BaseController
     return view('manager/index', $datar);
     }
 
+    public function tampildata2()
+    {
+        $session = session();
+        if (!$session->get('isLogin') || $session->get('role') !== 'divisiict') {
+            return redirect()->to('login');
+        }
+
+        $allRequests = $this->reque->tampilDataTabel2();
+
+        // Hitung total request
+        $totalRequest = count($allRequests);
+
+        // Hitung yang selesai
+        $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'Done'));
+        $totalBelumSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'On progress'));
+
+        // Hitung total barang unik
+        $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
+        $db = \Config\Database::connect();
+        $totalBarang = $db->table('barang')->countAll();
+
+        return view('divisiict/index2', [
+            'rdataa'            => $allRequests,
+            'totalRequest'      => $totalRequest,
+            'totalSelesai'      => $totalSelesai,
+            'totalBelumSelesai' => $totalBelumSelesai,
+            'totalBarang'       => $totalBarang,
+        ]);
+    }
+
     public function kirimemail()
     {
         $email = \Config\Services::email();

@@ -34,6 +34,7 @@ class Admin2 extends BaseController
 
         // Hitung yang selesai
         $totalSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'Done'));
+        $totalBelumSelesai = count(array_filter($allRequests, fn($r) => $r->status_reques === 'On progress'));
 
         // Hitung total barang unik
         $barangUnik = array_unique(array_map(fn($r) => $r->id_barang ?? null, $allRequests));
@@ -41,10 +42,11 @@ class Admin2 extends BaseController
         $totalBarang = $db->table('barang')->countAll();
 
         return view('divisiict/index2', [
-            'rdataa'        => $allRequests,
-            'totalRequest'  => $totalRequest,
-            'totalSelesai'  => $totalSelesai,
-            'totalBarang'   => $totalBarang,
+            'rdataa'            => $allRequests,
+            'totalRequest'      => $totalRequest,
+            'totalSelesai'      => $totalSelesai,
+            'totalBelumSelesai' => $totalBelumSelesai,
+            'totalBarang'       => $totalBarang,
         ]);
     }
 }
