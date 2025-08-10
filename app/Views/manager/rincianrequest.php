@@ -161,7 +161,7 @@
             </div>
 
           </div>
-          <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#approveModal"><i class="fas fa-plus"></i>Add Approval</button>
+          <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#approveModal"><i class="fas fa-plus mr-2"></i>Tambah Approval</button>
           <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -176,8 +176,14 @@
                   <div class="modal-body">
                     <div class="form-group">
                       <label for="date_approve">Date Of Approval</label>
-                      <input type="date" name="date_approve" id="date_approve" class="form-control" value="<?php date_default_timezone_set("Asia/Jakarta");
-                                                                                                            echo date('Y-m-d') ?>">
+                      <input type="date" name="date_approve" id="date_approve" class="form-control"
+                        value="<?php date_default_timezone_set('Asia/Jakarta');
+                                echo date('Y-m-d'); ?>">
+
+                      <!-- Kolom deskripsi -->
+                      <label for="description" class="mt-2">Deskripsi</label>
+                      <textarea name="description" id="description" class="form-control" rows="3" placeholder="Masukkan deskripsi"></textarea>
+
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -221,7 +227,7 @@
 
               <div class="text-right mt-3">
                 <a href="<?= base_url('manager') ?>" class="btn btn-danger">
-                  <i class="fas fa-arrow-left mr-1"></i> Cancel
+                  <i class="fas fa-arrow-left mr-1"></i> Kembali
                 </a>
               </div>
 

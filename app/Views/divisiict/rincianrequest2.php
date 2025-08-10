@@ -286,7 +286,7 @@
                                 <button class="btn btn-success" type="submit" style="float: right;">Simpan</button>
                                 </div>
                                 <div class="form-group">
-                                <button type="button" class="btn btn-danger" style="float: right; margin-right:10px" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-danger" style="float: right; margin-right:10px" data-dismiss="modal">Kembali</button>
                                 </div>
                           </div>
                           </form>
@@ -326,7 +326,7 @@
                           </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#assignModal"><i class="fas fa-plus"></i>Add Asign</button>
+                    <button type="button" class="btn btn-link float-right w-25" style="background-color: #66CDAA;color:black" data-toggle="modal" data-target="#assignModal"><i class="fas fa-plus mr-2"></i>Tambah Asign</button>
                     <div class="modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">

@@ -167,7 +167,7 @@
                         <td><?= $reque->date_request?></td>
                         <td><span style="background-color: <?= $reque->latest_approved ? 'transparent' : '#fff3cd'; ?>; color: <?= $reque->latest_approved ? '#000' : '#856404'; ?>; padding: 4px 8px; border-radius: 4px; font-weight: bold; display: inline-block;"><?= $reque->latest_approved ?? 'Belum Approve' ?></span></td>
                         <td><?= $reque->jpermintaan?></td>
-                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-approve').'/'.$reque->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Check</button></a></td>
+                        <td class=" d-flex align-items-center justify-content-center"><a href=<?php echo site_url('rincian-request-approve').'/'.$reque->id_request?>><button class="btn btn-link" style="background-color: black; color: white;">Periksa</button></a></td>
                       </tr>
                       <?php endforeach ?>
                     </tbody>

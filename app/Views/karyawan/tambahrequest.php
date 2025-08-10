@@ -183,7 +183,7 @@
                                 <button class="btn btn-success" type="submit" style="float: right;">Simpan</button>
                                 </div>
                                 <div class="form-group">
-                                <a href="<?=base_url('ict-request')?>" class="btn btn-danger" style="float: right; margin-right:10px">Cancel</a>
+                                <a href="<?=base_url('ict-request')?>" class="btn btn-danger" style="float: right; margin-right:10px">Kembali</a>
                                 </div>
                             </form>
                     </div>
