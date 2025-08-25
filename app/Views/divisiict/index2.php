@@ -186,11 +186,11 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Division</th>
-                        <th>Demand Type</th>
-                        <th>Description</th>
-                        <th>Date Of Request</th>
+                        <th>Nama</th>
+                        <th>Divisi</th>
+                        <th>Jenis Permintaan</th>
+                        <th>Deskripsi</th>
+                        <th>Tanggal Permintaan</th>
                         <th>Status</th>
                         <th>Assignment</th>
                         <th>Data Print</th>

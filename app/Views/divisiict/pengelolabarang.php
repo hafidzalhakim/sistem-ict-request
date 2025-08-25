@@ -185,7 +185,7 @@
                                   <th>SN Barang</th>
                                   <th>Lokasi</th>
                                   <th>Status Barang</th>
-                                  <th>Note</th>
+                                  <th>Keterangan</th>
                                   <th>Gambar Barang</th>
                                   <th>Action</th>
                               </tr>

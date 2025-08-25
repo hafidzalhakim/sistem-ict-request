@@ -180,10 +180,10 @@
                   >
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Division</th>
+                        <th>Nama</th>
+                        <th>Divisi</th>
                         <th>Username</th>
-                        <th>Role</th>
+                        <th>Peran</th>
                         <th>Action</th>
 
                       </tr>
